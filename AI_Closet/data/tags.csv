@@ -1,0 +1,4 @@
+filename,type,dominant_color,pattern,season,formality
+blue_hoodie.jpg,top,"rgb(10,50,130)",solid,winter,3
+black_jeans.jpg,bottom,"rgb(20,20,20)",solid,fall,2
+white_sneakers.jpg,shoes,"rgb(230,230,230)",solid,spring,1
