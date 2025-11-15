@@ -1,0 +1,30 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Python egg metadata
+*.egg-info/
+
+# Local env
+.env
+
+# Data
+data/metadata/*.db
+data/metadata/*.sqlite
+data/images/*
+!data/images/.gitkeep
+
+# Streamlit
+.streamlit/
