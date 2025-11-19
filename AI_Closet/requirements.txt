@@ -13,3 +13,4 @@ matplotlib>=3.8
 fastapi>=0.111
 pydantic>=2.8
 typing-extensions>=4.12
+python-dotenv
