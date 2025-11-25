@@ -4,9 +4,10 @@ from typing import List, Dict
 
 @dataclass
 class Item:
-    id: int
-    type: str
+    type: str       # e.g., "top", "bottom"
     color: str
+    image_path: str
+    tags: str
 
 def is_cool(temp_f: float) -> bool:
     return temp_f <= 60

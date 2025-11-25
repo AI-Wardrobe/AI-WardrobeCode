@@ -1,0 +1,11 @@
+item_id,category,color,material,tags,season,occasion,image_path
+1,pants,black,denim,"casual,all",casual,all,images/pants1.jpg
+2,pants,gray,wool,"formal,fall,work",formal,fall,images/pants2.jpg
+3,dress,red,silk,"party,elegant",summer,party,images/dress1.jpg
+4,dress,black,cotton,"casual,summer",summer,casual,images/dress2.jpg
+5,shoes,brown,leather,"formal,all,work",all,work,images/shoes1.jpg
+6,shoes,white,sneakers,"casual,all",all,casual,images/shoes2.jpg
+7,jacket,black,leather,"casual,all",fall,casual,images/jacket1.jpg
+8,jacket,navy,wool,"formal,work,winter",winter,formal,images/jacket2.jpg
+9,shirt,green,flannel,"casual,fall",fall,casual,images/shirt1.jpg
+10,skirt,beige,linen,"casual,summer",summer,casual,images/skirt1.jpg
