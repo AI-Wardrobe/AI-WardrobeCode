@@ -1,9 +1,21 @@
 
 import streamlit as st
 import os, glob
+import os, sys
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
 from src.db.db import list_items, add_item
 from src.vision.tagger import extract_dominant_color, classify_type_from_name
-from src.recommender.rules import recommend, Item
+from src.recommender.rules import recommend
+
+from dataclasses import dataclass
+
+@dataclass
+class Item:
+    id: int
+    type: str
+    color: str
 
 st.set_page_config(page_title="AI Closet", page_icon="👕", layout="wide")
 st.title("AI Closet — Web Prototype")
