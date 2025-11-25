@@ -1,9 +1,8 @@
-# src/utils/data_loader.py
-
 import os
 import pandas as pd
 
 from src.db.db import add_item, init_db
+from src.utils.validate_data import validate_dataframe
 
 # Base directory: go up from this file to project root, then into data/
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -14,13 +13,7 @@ def load_tags_csv(csv_path: str | None = None) -> pd.DataFrame:
     """
     Load the tags CSV exported from Colab.
 
-    Expected columns (flexible / not all required):
-    - filename or image_name
-    - type or predicted_type
-    - dominant_color or color
-    - pattern (optional)
-    - season (optional)
-    - formality (optional, numeric or string)
+    If csv_path is None, defaults to data/tags.csv.
     """
     if csv_path is None:
         csv_path = os.path.join(DATA_DIR, "tags.csv")
@@ -72,10 +65,9 @@ def sync_items_from_df(df: pd.DataFrame) -> int:
             try:
                 formality = int(row["formality"])
             except (ValueError, TypeError):
-                # If it's not convertible, just leave as None
                 formality = None
 
-        # Insert into DB via helper from src/db/db.py
+        # Insert into DB
         add_item(
             filename=filename,
             type_=type_,
@@ -94,10 +86,20 @@ def load_and_sync(csv_path: str | None = None) -> int:
     """
     Convenience function:
     - Loads the CSV
+    - Validates it
     - Inserts rows into DB
     - Returns number of inserted items
     """
     df = load_tags_csv(csv_path)
+
+    # Validate first
+    issues = validate_dataframe(df)
+    if issues:
+        print("⚠ Data validation found issues:")
+        for msg in issues:
+            print("  -", msg)
+        print("Continuing anyway and inserting what we can...\n")
+
     count = sync_items_from_df(df)
     return count
 
